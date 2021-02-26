@@ -19,10 +19,10 @@
                             @foreach($lists as $list)
                                 <div class="form-check-inline w-chexbox-permission mb-2 mr-1">
                                     <input @foreach($tasksSearch as $taskSearch)
-                                            @if($taskSearch == $list->id) checked @endif
-                                            @endforeach
-                                            class="form-check-input" type="checkbox" name="lists[]"
-                                            id="search_tag_{{$list->id}}" value="{{$list->id}}">
+                                           @if($taskSearch == $list->id) checked @endif
+                                           @endforeach
+                                           class="form-check-input" type="checkbox" name="lists[]"
+                                           id="search_tag_{{$list->id}}" value="{{$list->id}}">
 
                                     <label class="form-check-label bg-gradient-danger btn btn-sm search_tag_filtr"
                                            for="search_tag_{{$list->id}}">{{$list->title}}</label>
@@ -48,7 +48,9 @@
                                     <div class="d-block link-search-page">
 
                                         <h4>{{$task->title}}</h4>
-                                        <p class="list-title-search">Список: <a href="{{ route('list', ['id' => $task->list_id])}}">{{$task->list_title}}</a></p>
+                                        <p class="list-title-search">Список: <a
+                                                    href="{{ route('list', ['id' => $task->list_id])}}">{{$task->list_title}}</a>
+                                        </p>
 
                                         @if($task->is_done == 1)
 
@@ -56,7 +58,8 @@
                                         @else
                                             <i class="mdi mdi-close not-done" title="Не виконане завдання"></i>
                                         @endif
-                                        <div class="created-date">Створено: {{\Carbon\Carbon::parse($task->created_at)->format('d.m.Y H:i')}}</div>
+                                        <div class="created-date">
+                                            Створено: {{\Carbon\Carbon::parse($task->created_at)->format('d.m.Y H:i')}}</div>
 
                                     </div>
                                 </div>

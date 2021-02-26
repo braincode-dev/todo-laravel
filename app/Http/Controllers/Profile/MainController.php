@@ -32,7 +32,6 @@ class MainController extends Controller
         if ($request->ajax()) {
             $text = $request->input('text');
             $places = Tasks::where('title', 'Like', "%$text%")
-//                ->join('todo_lists', 'todo_tasks.todo_list_id', '=', 'todo_lists.id')
                 ->select('title', 'todo_list_id', 'is_done', 'created_at')
                 ->get();
 
@@ -61,8 +60,6 @@ class MainController extends Controller
             ->where('todo_tasks.title', 'Like', "%$text%")
             ->where('todo_lists.user_id', auth()->user()->id)
             ->paginate(12);
-
-//        dd($searchResult);
 
         return view('profile.search', [
             'searchResult' => $searchResult,
